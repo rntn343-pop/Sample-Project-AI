@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Party Budget Planner — PocketSmart AI{% endblock %}
+{% block content %}
+<section class="page-hero"><span class="eyebrow">Party Budget Planner</span><h1>Plan a great event without losing the budget.</h1><p>Set the guest count, event context and the services you actually need.</p></section>
+<section class="section compact"><form class="planner-form" data-planner-form action="/generate-party" method="post">
+  <div class="form-section"><h2>① Basic Information</h2><div class="grid-2"><label>Total Budget (₹)<input type="number" name="total_budget" min="1" step="1" required value="50000"></label><label>Number of Guests<input type="number" name="num_guests" min="1" required value="20"></label></div></div>
+  <div class="form-section"><h2>② Event Details</h2><div class="grid-2"><label>Party Type<select name="party_type"><option>Birthday</option><option>Wedding</option><option>Corporate</option><option>Anniversary</option><option>Festival</option></select></label><label>Venue Type<select name="venue_type"><option>Home</option><option>Hall</option><option>Restaurant</option><option>Outdoor</option><option>Hotel</option></select></label></div></div>
+  <div class="form-section"><h2>③ Party Needs</h2><div class="check-grid"><label class="check"><input type="checkbox" name="needs_catering" value="true" checked><span>Catering</span></label><label class="check"><input type="checkbox" name="needs_decoration" value="true" checked><span>Decoration</span></label><label class="check"><input type="checkbox" name="needs_entertainment" value="true"><span>Entertainment</span></label></div></div>
+  <div class="form-section"><h2>④ Additional Requirements</h2><label>Special requests, theme, dietary needs, etc.<textarea name="additional_requirements" rows="4" placeholder="e.g. vegetarian menu, pastel theme, speaker setup"></textarea></label></div>
+  <button class="btn primary wide" type="submit">Generate Budget Plan</button><div class="loading" data-loading hidden>Planning your event…</div>
+</form><div data-results class="result-slot"></div></section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', path='js/planner.js') }}"></script>{% endblock %}

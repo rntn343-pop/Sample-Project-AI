@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Home Interior Planner — PocketSmart AI{% endblock %}
+{% block content %}
+<section class="page-hero"><span class="eyebrow">Home Interior Budget Planner</span><h1>Design within your budget.</h1><p>Set a total budget, tell us what you need, and PocketSmart will build a category-wise plan.</p></section>
+<section class="section compact"><form class="planner-form" data-planner-form action="/generate-home" method="post">
+  <div class="form-section"><h2>① Budget Details</h2><label>Total Budget (₹)<input type="number" name="total_budget" min="1" step="1" required value="50000"></label></div>
+  <div class="form-section"><h2>② Fixtures & Furniture</h2><div class="grid-2"><label>Number of Lights / Fixtures<input type="number" name="num_lights" min="0" value="4"></label><label>Number of Ceiling Fans<input type="number" name="num_fans" min="0" value="2"></label><label>Number of Furniture Pieces<input type="number" name="num_furniture" min="0" value="2"></label><label>Number of Dining Tables<input type="number" name="num_dining_tables" min="0" value="1"></label></div></div>
+  <div class="form-section"><h2>③ Rooms to Include</h2><div class="check-grid">{% for room in ['Living Room','Kitchen','Bedroom','Dining Room','Balcony','Home Office'] %}<label class="check"><input type="checkbox" name="rooms" value="{{ room }}" {% if room in ['Living Room','Bedroom'] %}checked{% endif %}><span>{{ room }}</span></label>{% endfor %}</div></div>
+  <div class="form-section"><h2>④ Additional Information</h2><label>Special Requirements or Preferences<textarea name="additional_requirements" rows="4" placeholder="e.g. warm lighting, minimalist look, rental-friendly furniture"></textarea></label></div>
+  <button class="btn primary wide" type="submit">Generate Recommendations</button>
+  <div class="loading" data-loading hidden>Generating your plan…</div>
+</form><div data-results class="result-slot"></div></section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', path='js/planner.js') }}"></script>{% endblock %}

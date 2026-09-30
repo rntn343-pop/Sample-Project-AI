@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Jewelry Budget Planner — PocketSmart AI{% endblock %}
+{% block content %}
+<section class="page-hero"><span class="eyebrow">Jewelry Budget Planner</span><h1>Match jewelry to the occasion and your budget.</h1><p>Add an outfit image for optional visible color/style analysis when Gemini is configured.</p></section>
+<section class="section compact"><form class="planner-form" data-planner-form action="/generate-jewelry" method="post" enctype="multipart/form-data">
+  <div class="form-section"><h2>① Budget Details</h2><label>Total Budget (₹)<input type="number" name="total_budget" min="1" step="1" required value="5000"></label></div>
+  <div class="form-section"><h2>② Occasion & Preferences</h2><div class="grid-2"><label>Occasion<select name="occasion"><option>Birthday</option><option>Wedding</option><option>Party</option><option>Office</option><option>Festive</option><option>Date Night</option></select></label><label>Style Preferences<textarea name="preferences" rows="2" placeholder="e.g. minimal, gold tone, traditional"></textarea></label></div></div>
+  <div class="form-section"><h2>③ Upload Outfit Image</h2><label class="upload-box"><input id="outfit-image" type="file" name="image" accept="image/png,image/jpeg,image/webp"><span>Choose JPG, PNG or WEBP (max {{ 5 }} MB)</span><img id="image-preview" class="image-preview" alt="Outfit preview" hidden></label></div>
+  <button class="btn primary wide" type="submit">Get Recommendations</button><div class="loading" data-loading hidden>Analyzing your request…</div>
+</form><div data-results class="result-slot"></div></section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', path='js/planner.js') }}"></script>{% endblock %}

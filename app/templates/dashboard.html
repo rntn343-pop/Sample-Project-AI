@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — PocketSmart AI{% endblock %}
+{% block content %}
+<section class="dashboard-hero"><div><span class="eyebrow">Personalized workspace</span><h1>Welcome, {{ user.username }}!</h1><p>Choose a budget planner to get started with your personalized planning experience.</p></div></section>
+<section class="section compact">
+  <div class="grid-3">
+    <article class="planner-card"><div class="planner-image home-art"></div><div class="planner-body"><h3>⌂ Home Budget Planner</h3><p>Plan an interior budget with recommendations for furniture, lighting and more.</p><a class="btn primary" href="/home-planner">Get Started</a></div></article>
+    <article class="planner-card"><div class="planner-image party-art"></div><div class="planner-body"><h3>✦ Party Budget Planner</h3><p>Plan an event with budget allocations for food, decoration, venue and entertainment.</p><a class="btn primary" href="/party-planner">Get Started</a></div></article>
+    <article class="planner-card"><div class="planner-image jewelry-art"></div><div class="planner-body"><h3>◇ Jewelry Budget Planner</h3><p>Find jewelry ideas that match an occasion and your chosen budget.</p><a class="btn primary" href="/jewelry-planner">Get Started</a></div></article>
+  </div>
+</section>
+<section class="section compact">
+  <div class="section-title-row"><h2>Recent Activity</h2><a href="/history">View all history →</a></div>
+  {% if history %}<div class="history-list">{% for item in history %}<div class="history-row"><div class="history-type">{{ item.recommendation_type|title }}</div><div class="history-summary">{{ item.result_summary }}</div><div class="history-date">{{ item.created_at.strftime('%d %b %Y %H:%M') }}</div><a href="/recommendations-details/{{ item.id }}">View</a></div>{% endfor %}</div>{% else %}<div class="empty-state">No recommendations yet. Start with one of the planners above.</div>{% endif %}
+</section>
+{% endblock %}

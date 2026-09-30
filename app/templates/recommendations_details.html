@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Recommendation Details — PocketSmart AI{% endblock %}
+{% block content %}
+<section class="page-hero"><span class="eyebrow">{{ recommendation.recommendation_type|title }} recommendation</span><h1>Your Personalized Plan</h1><p>{{ recommendation.created_at.strftime('%d %b %Y %H:%M') }}</p></section>
+<section class="section compact">{% include 'partials/_recommendation_content.html' %}</section>
+{% endblock %}

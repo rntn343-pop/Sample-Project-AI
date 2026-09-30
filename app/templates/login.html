@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Sign In — PocketSmart AI{% endblock %}
+{% block content %}
+<div class="auth-shell"><div class="auth-card">
+  <div class="auth-brand">PocketSmart</div><div class="auth-subtitle">AI-Powered Budget Planning</div>
+  <h1>Welcome back</h1>
+  <form method="post" action="/login" class="form-stack">
+    <label>Username<input name="username" required autocomplete="username" value="{{ form.username if form else '' }}" placeholder="Enter your username"></label>
+    <label>Password<input type="password" name="password" required autocomplete="current-password" placeholder="Enter your password"></label>
+    <button class="btn primary wide" type="submit">Sign In →</button>
+  </form>
+  <p class="auth-foot">Don’t have an account? <a href="/register">Create Account</a></p>
+</div></div>
+{% endblock %}

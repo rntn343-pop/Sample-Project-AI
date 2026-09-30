@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Recommendation History — PocketSmart AI{% endblock %}
+{% block content %}
+<section class="page-hero"><span class="eyebrow">Your saved plans</span><h1>Your Recommendation History</h1><p>Review previous budget plans and open any saved recommendation in full.</p></section>
+<section class="section compact">
+  {% if history %}<div class="grid-3">{% for item in history %}
+    <article class="history-card"><div class="history-card-top"><span class="pill">{{ item.recommendation_type|title }} Budget</span><span>{{ item.created_at.strftime('%d %b %Y') }}</span></div><h3>{{ item.result_summary[:90] }}{% if item.result_summary|length > 90 %}…{% endif %}</h3><div class="history-metrics"><div><span>Total</span><strong>₹{{ '%.2f'|format(item.result.get('total_budget', 0)) }}</strong></div><div><span>Remaining</span><strong>₹{{ '%.2f'|format(item.result.get('remaining_budget', 0)) }}</strong></div></div><a class="btn secondary wide" href="/recommendations-details/{{ item.id }}">View Full Details</a></article>
+  {% endfor %}</div>{% else %}<div class="empty-state">No saved recommendations yet.</div>{% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}PocketSmart AI — Smart Budget Planning{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">AI-powered budget planning</span>
+    <h1>Spend smarter on the things that matter.</h1>
+    <p>Plan a home interior, organize a party, or match jewelry to an occasion — all around the budget you set.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="/register">Get Started</a>
+      <a class="btn secondary" href="#features">Learn More</a>
+    </div>
+    <div class="hero-note">Gemini-enabled when configured · Deterministic fallback mode included</div>
+  </div>
+</section>
+
+<section id="features" class="section">
+  <div class="section-head">
+    <span class="eyebrow">Our smart planners</span>
+    <h2>Three planning modes, one budget-first workflow.</h2>
+    <p>Each planner gathers a different set of inputs, then turns them into a structured plan with category allocations and platform search links.</p>
+  </div>
+  <div class="grid-3">
+    <article class="feature-card">
+      <div class="icon">⌂</div><h3>Home Interior Planner</h3>
+      <p>Choose rooms and quantities for lights, fans, furniture and dining pieces. Generate a budget-aware setup.</p>
+      <a href="/register">Plan a home →</a>
+    </article>
+    <article class="feature-card">
+      <div class="icon">✦</div><h3>Party Planner</h3>
+      <p>Enter guests, event type, venue and needs for catering, decoration and entertainment.</p>
+      <a href="/register">Plan a party →</a>
+    </article>
+    <article class="feature-card">
+      <div class="icon">◇</div><h3>Jewelry Planner</h3>
+      <p>Describe the occasion and style. Optionally upload an outfit image for visible color and style analysis.</p>
+      <a href="/register">Plan jewelry →</a>
+    </article>
+  </div>
+</section>
+
+<section class="section soft">
+  <div class="section-head"><span class="eyebrow">How it works</span><h2>From inputs to a usable plan.</h2></div>
+  <div class="steps">
+    <div><strong>01</strong><h3>Set the budget</h3><p>Start with a clear INR ceiling.</p></div>
+    <div><strong>02</strong><h3>Add context</h3><p>Give the planner the quantities, guests, occasion or style information it needs.</p></div>
+    <div><strong>03</strong><h3>Review the plan</h3><p>See allocations, estimated costs, suggestions and platform search links.</p></div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div><span class="eyebrow">Ready to optimize your budget?</span><h2>Build your first plan in a few clicks.</h2></div>
+  <div class="hero-actions"><a class="btn light" href="/register">Create Account</a><a class="btn outline-light" href="/login">Sign In</a></div>
+</section>
+{% endblock %}
